@@ -6,13 +6,10 @@ const HelloWebpackPlugin = require('./plugins/hello-webpack-plugin')
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.tsx?",
+  entry: "./src/main.tsx?",
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "[name].[contenthash:8].js",
-  },
-  resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   module: {
     rules: [
@@ -36,9 +33,22 @@ module.exports = {
         }
       },
       {
+        test: /\.less$/,
+        use: ["style-loader", "css-loader", "less-loader"], // 指定要处理的.less文件的加载器
+      },
+      {
         test: /\.css$/,
         use: ["style-loader", "css-loader"], // 指定要处理的.css文件的加载器
       },
+      {
+        test: /\.(svg|jpg|png|gif)$/, // 针对这三种格式的文件使用file-loader处理
+        type: 'asset',
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8192
+          }
+        }
+      }
     ],
   },
   plugins: [
@@ -51,7 +61,7 @@ module.exports = {
   ],
   resolve: {
     // directories where to look for modules (in order)
-    extensions: [".ts", ".js", ".json", ".jsx", ".css"],
+    extensions: ['.js', '.jsx', '.ts', '.tsx', ".json"],
     alias: {
       "@assets": path.resolve(__dirname, "assets"),
     },
@@ -62,5 +72,6 @@ module.exports = {
     compress: true, // enable gzip compression
     hot: false, // hot module replacement. Depends on HotModuleReplacementPlugin
     https: false, 
+    historyApiFallback: true
   }
 };
