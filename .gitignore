@@ -1,0 +1,7 @@
+**/build/
+**/dist/
+**/node_modules/
+**/CMakeFiles/
+**/.DS_Store
+**/__pycache__
+**/.ipynb_checkpoints
