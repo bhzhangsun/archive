@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -c webpack.config.js",
-    "dev": "webpack serve"
+    "dev": "webpack serve & y-websocket-server"
   },
   "keywords": [],
   "author": "",
@@ -24,15 +24,18 @@
     "restore-source-tree": "^0.1.1",
     "style-loader": "^3.3.1",
     "tapable": "^2.2.1",
-    "url-loader": "^4.1.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "quill": "^1.3.7",
+    "quill-cursors": "^4.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-quill": "^2.0.0",
-    "react-router-dom": "^6.8.2"
+    "react-router-dom": "^6.8.2",
+    "y-quill": "^0.1.5",
+    "y-websocket": "^1.4.6",
+    "yjs": "^13.5.48"
   }
 }
